@@ -579,11 +579,13 @@ async function handleRsvpSubmit(e) {
   };
 
   try {
-    fetch('/api/rsvp', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).catch(() => {});
+    if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+      fetch('/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(() => {});
+    }
 
     if (GOOGLE_SCRIPT_URL) {
       const qs = new URLSearchParams(payload).toString();
@@ -613,6 +615,28 @@ async function handleRsvpSubmit(e) {
 
 // 8. WISHES GUESTBOOK & SUGGESTIONS
 // ==========================================
+function getLocalWishes() {
+  try {
+    return JSON.parse(localStorage.getItem('wedding_guestbook_wishes') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveLocalWish(item) {
+  try {
+    const list = getLocalWishes();
+    list.unshift(item);
+    localStorage.setItem('wedding_guestbook_wishes', JSON.stringify(list.slice(0, 50)));
+  } catch (e) {}
+}
+
+function safeText(str) {
+  const d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML;
+}
+
 function applySuggestedWish(btn) {
   const textarea = document.getElementById('wish-message');
   if (textarea) {
@@ -651,11 +675,14 @@ async function handleWishSubmit(e) {
   };
 
   try {
-    fetch('/api/wishes', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).catch(() => {});
+    // Only call local Node server API when running on localhost to avoid 404 on Vercel
+    if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+      fetch('/api/wishes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(() => {});
+    }
 
     if (GOOGLE_SCRIPT_URL) {
       const qs = new URLSearchParams(payload).toString();
@@ -668,12 +695,15 @@ async function handleWishSubmit(e) {
       }).catch(err => console.warn('Google Script sync warning:', err));
     }
 
+    // Persist locally so guests see their wish immediately and on page reloads
+    saveLocalWish({ name: author, message: message, time: 'Vừa xong' });
+
     if (list) {
       const card = document.createElement('div');
       card.className = 'wish-item-card';
       card.innerHTML = `
-        <div class="wish-name">${author}</div>
-        <div class="wish-body">${message}</div>
+        <div class="wish-name">${safeText(author)}</div>
+        <div class="wish-body">${safeText(message)}</div>
       `;
       list.prepend(card);
     }
@@ -696,26 +726,45 @@ async function handleWishSubmit(e) {
 }
 
 async function loadWishes() {
-  try {
-    const res = await fetch('/api/wishes');
-    if (res.ok) {
-      const json = await res.json();
-      if (json && json.data && json.data.length > 0) {
-        const list = document.getElementById('wishes-list');
-        if (!list) return;
-        list.innerHTML = '';
-        json.data.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'wish-item-card';
-          card.innerHTML = `
-            <div class="wish-name">${item.name || 'Khách quý'}</div>
-            <div class="wish-body">${item.message || item.wishes || ''}</div>
-          `;
-          list.appendChild(card);
-        });
+  const list = document.getElementById('wishes-list');
+  if (!list) return;
+
+  // 1. Render persisted wishes from localStorage first
+  const localWishes = getLocalWishes();
+  if (localWishes.length > 0) {
+    list.innerHTML = '';
+    localWishes.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'wish-item-card';
+      card.innerHTML = `
+        <div class="wish-name">${safeText(item.name || 'Khách quý')}</div>
+        <div class="wish-body">${safeText(item.message || item.wishes || '')}</div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  // 2. If running on localhost, sync from Node server database
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    try {
+      const res = await fetch('/api/wishes');
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.data && json.data.length > 0) {
+          list.innerHTML = '';
+          json.data.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'wish-item-card';
+            card.innerHTML = `
+              <div class="wish-name">${safeText(item.name || 'Khách quý')}</div>
+              <div class="wish-body">${safeText(item.message || item.wishes || '')}</div>
+            `;
+            list.appendChild(card);
+          });
+        }
       }
-    }
-  } catch (e) {}
+    } catch (e) {}
+  }
 }
 
 // ==========================================
