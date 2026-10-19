@@ -1075,39 +1075,81 @@ body {
 
 .card-parchment-frame {
   position: relative;
-  width: 530px;
-  max-width: 100%;
+  width: 450px;
+  max-width: 94vw;
   margin: 0 auto;
+  padding: 38px 32px 30px;
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 20%, #fffdfa 0%, #faf3e8 60%, #f4e9da 100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14), 0 2px 12px rgba(180, 140, 70, 0.18), inset 0 0 0 1.5px rgba(212, 175, 55, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.card-inner-gold-border {
+  position: absolute;
+  inset: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-wax-seal {
+  margin-bottom: 8px;
   z-index: 2;
 }
 
-.card-bg-texture {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.12));
+.card-seal-medallion {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fae8bb 0%, #d8b248 55%, #9b7222 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(160, 110, 30, 0.4), 0 0 0 6px rgba(212, 175, 55, 0.16), 0 0 0 12px rgba(212, 175, 55, 0.08);
+  border: 1.5px solid #fff5d6;
 }
 
-/* Toàn bộ thông tin chữ nằm trọn vẹn bên trong ô màu trắng (đã bỏ Bạn và người thương) */
+.card-seal-medallion img {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 1px 1px rgba(80, 40, 0, 0.5));
+  display: block;
+}
+
+.c-save-the-date {
+  font-family: 'Cinzel', 'Yeseva One', serif;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #9e7328;
+  font-weight: 600;
+  margin-bottom: 16px;
+  z-index: 2;
+}
+
 .card-photo-wrapper {
-  position: absolute;
-  top: 18.5%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 235px;
-  height: 235px;
+  position: static;
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16), 0 0 0 4px #ffffff, 0 0 0 5.5px rgba(212, 175, 55, 0.55);
+  margin-bottom: 18px;
   cursor: pointer;
-  border-radius: 2px;
+  z-index: 2;
 }
 
 .card-photo-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   transition: transform 0.4s ease;
 }
 
@@ -1116,103 +1158,104 @@ body {
 }
 
 .card-couple-calligraphy {
-  position: absolute;
-  top: 45.2%;
-  width: 100%;
-  text-align: center;
+  position: static;
   font-family: 'UVNMoiHong', 'UTM ViceroyJF', cursive;
-  font-size: 28px;
-  color: #9C0000;
-  font-weight: normal;
+  font-size: 32px;
+  color: #8b0000;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  z-index: 2;
 }
 
 .c-amp {
   margin: 0 10px;
 }
 
-.c-invite-label {
-  position: absolute;
-  top: 50.2%;
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: #555555;
-  letter-spacing: 0.6px;
+.c-divider-mark {
+  font-size: 10px;
+  color: #c69d48;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  z-index: 2;
 }
 
-.c-guest-name {
-  display: none !important;
+.c-invite-label {
+  position: static;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+  color: #555555;
+  margin-bottom: 8px;
+  z-index: 2;
 }
 
 .c-desc {
-  position: absolute;
-  top: 53.2%;
-  width: 100%;
-  text-align: center;
+  position: static;
   font-size: 13.5px;
   color: #666666;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  max-width: 340px;
+  z-index: 2;
 }
 
 .c-date-en {
-  position: absolute;
-  top: 56.2%;
-  width: 100%;
-  text-align: center;
+  position: static;
   font-family: var(--font-dinhhon);
-  font-size: 28px;
-  color: #9C0000;
-  line-height: 1.1;
+  font-size: 26px;
+  color: #8b0000;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  z-index: 2;
 }
 
 .c-date-vi {
-  position: absolute;
-  top: 61.5%;
-  width: 100%;
-  text-align: center;
-  font-size: 13.8px;
+  position: static;
+  font-size: 14px;
   font-weight: 600;
-  color: #333333;
+  color: #222222;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  z-index: 2;
 }
 
 .c-venue-name {
-  position: absolute;
-  top: 65.5%;
-  width: 100%;
-  text-align: center;
-  font-size: 15.5px;
+  position: static;
+  font-size: 17px;
   font-weight: 700;
-  color: #9C0000;
+  color: #8b0000;
+  margin-bottom: 6px;
+  z-index: 2;
 }
 
 .c-venue-address {
-  position: absolute;
-  top: 68.8%;
-  width: 88%;
-  left: 6%;
-  text-align: center;
-  font-size: 13.8px;
-  font-weight: 700;
-  color: #9C0000;
-  line-height: 1.35;
-  padding: 0;
+  position: static;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8b0000;
+  line-height: 1.6;
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 22px;
+  z-index: 2;
 }
 
-.c-venue-address span {
-  font-size: 11.5px;
-  opacity: 0.9;
-  display: inline-block;
+.c-old-addr {
+  display: block;
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 3px;
+  font-weight: normal;
 }
 
 .card-buttons-row {
+  position: static;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-  width: 530px;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  z-index: 2;
 }
 
 .btn-card-action {
@@ -3766,105 +3809,109 @@ body {
   }
 
   .card-parchment-frame {
-    width: 300px !important;
-    max-width: 300px !important;
+    width: 334px !important;
+    max-width: 92vw !important;
+    padding: 30px 20px 26px !important;
+    border-radius: 18px !important;
     margin: 0 auto !important;
-    z-index: 2 !important;
   }
 
-  /* 1. Ảnh cưới compact vừa vặn */
+  .card-inner-gold-border {
+    inset: 8px !important;
+    border-radius: 12px !important;
+  }
+
+  .card-seal-medallion {
+    width: 50px !important;
+    height: 50px !important;
+    box-shadow: 0 4px 14px rgba(160, 110, 30, 0.4), 0 0 0 5px rgba(212, 175, 55, 0.16), 0 0 0 10px rgba(212, 175, 55, 0.08) !important;
+  }
+
+  .card-seal-medallion img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .c-save-the-date {
+    font-size: 12px !important;
+    letter-spacing: 3.5px !important;
+    margin-bottom: 14px !important;
+  }
+
   .card-photo-wrapper {
-    top: 18.5% !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 44% !important;
-    height: auto !important;
-    aspect-ratio: 1 / 1 !important;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+    width: 148px !important;
+    height: 148px !important;
+    border-radius: 8px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16), 0 0 0 3px #ffffff, 0 0 0 4.5px rgba(212, 175, 55, 0.55) !important;
   }
 
-  /* 2. Tên cô dâu chú rể */
   .card-couple-calligraphy {
-    top: 44.8% !important;
-    font-size: 18px !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  /* 3. TRÂN TRỌNG KÍNH MỜI */
-  .c-invite-label {
-    top: 49.8% !important;
-    font-size: 10px !important;
-    letter-spacing: 0.5px !important;
-  }
-
-  /* Bỏ phần Bạn và người thương */
-  .c-guest-name {
-    display: none !important;
-  }
-
-  /* 4. Lời mời */
-  .c-desc {
-    top: 52.8% !important;
-    font-size: 9.5px !important;
-  }
-
-  /* 5. Thứ ngày tiếng Anh */
-  .c-date-en {
-    top: 55.6% !important;
-    font-size: 19px !important;
-    line-height: 1.1 !important;
-  }
-
-  /* 6. Giờ và ngày tiếng Việt */
-  .c-date-vi {
-    top: 61% !important;
-    font-size: 10px !important;
-    font-weight: 600 !important;
-  }
-
-  /* 7. Tư gia nhà Trai (NẰM HOÀN TOÀN TRONG Ô MÀU TRẮNG) */
-  .c-venue-name {
-    top: 65% !important;
-    font-size: 11.5px !important;
-    font-weight: 700 !important;
-    color: #9C0000 !important;
-  }
-
-  /* 8. Địa chỉ (NẰM HOÀN TOÀN TRONG Ô MÀU TRẮNG, CÁCH ĐÁY Ô TRẮNG AN TOÀN) */
-  .c-venue-address {
-    top: 68.2% !important;
-    font-size: 9.8px !important;
+    font-size: 27px !important;
+    margin-bottom: 6px !important;
     line-height: 1.3 !important;
-    width: 90% !important;
-    left: 5% !important;
-    padding: 0 !important;
-    color: #9C0000 !important;
   }
 
-  .c-venue-address span {
-    font-size: 8.8px !important;
-    line-height: 1.25 !important;
-    display: inline-block !important;
+  .c-divider-mark {
+    font-size: 9px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .c-invite-label {
+    font-size: 12px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .c-desc {
+    font-size: 12.5px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 14px !important;
+    max-width: 270px !important;
+  }
+
+  .c-date-en {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .c-date-vi {
+    font-size: 12.5px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .c-venue-name {
+    font-size: 15.5px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .c-venue-address {
+    font-size: 12.5px !important;
+    line-height: 1.6 !important;
+    max-width: 280px !important;
+    margin-bottom: 18px !important;
+    color: #8b0000 !important;
+  }
+
+  .c-old-addr {
+    font-size: 11px !important;
   }
 
   .card-buttons-row {
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-    width: 300px !important;
-    max-width: 100%;
-    margin-top: 24px !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
 
   .btn-card-action {
-    width: 146px !important;
+    width: 140px !important;
     height: 38px !important;
     font-size: 13px !important;
-    font-weight: 600;
-    border-radius: 9999px;
+    font-weight: 600 !important;
+    border-radius: 9999px !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
   }
