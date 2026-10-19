@@ -8,7 +8,7 @@
 // ==========================================
 // 1. DATASET & CONFIGURATION
 // ==========================================
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9DSHqd9H3Ozx5kliWqyj-xvPxe477ZU67Ssh62DcCXXl6yQQRpBrfhKOHQ1KsQ_A/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9DSHqd9H3Ozx5kIiWqyj-xvPxe477ZU67Ssh62DcCXxI6yQQRpBrfhKOHQ1KsQ_A/exec';
 
 const ALBUM_IMAGES = [
   "images/wedding/PQD06286.jpg",
