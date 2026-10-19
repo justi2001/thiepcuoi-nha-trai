@@ -1402,32 +1402,85 @@ body {
   margin: 0 auto;
 }
 
-/* Luxury RSVP Card Container */
+/* ==========================================
+   WHITE EMBROIDERED LACE FRAME (REN THÊU TRẮNG THEO MẪU LOIMOI)
+   ========================================== */
+.card-lace-frame {
+  position: absolute;
+  inset: -14px -16px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.16));
+}
+
+.card-lace-paper-bg {
+  position: absolute;
+  inset: 4% 3.2%;
+  background: #FCFDFD;
+  border-radius: 14px;
+  z-index: -1;
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+.card-lace-paper-bg.lace-glass-bg {
+  background: rgba(22, 18, 16, 0.42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.lace-top-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.lace-side-div {
+  margin-top: -2px;
+  margin-bottom: -2px;
+  flex: 1;
+  width: 100%;
+  background-image: url('../images/decor/lace-side.webp');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: center top;
+  pointer-events: none;
+}
+
+.lace-bottom-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Luxury RSVP Card Container (Thay viền cũ bằng viền hoa ren thêu trắng) */
 .rsvp-card-box {
   width: 720px;
   max-width: 95%;
   margin: 32px auto 0;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  background: transparent !important;
+  border: none !important;
   border-radius: 20px;
-  box-shadow:
-    0 20px 50px rgba(139, 91, 19, 0.12),
-    0 4px 15px rgba(0, 0, 0, 0.04);
-  padding: 42px 48px;
+  box-shadow: none !important;
+  padding: 56px 44px 50px !important;
   position: relative;
-  overflow: hidden;
+  overflow: visible !important;
 }
 
-/* Subtle dashed inner border */
+/* Bỏ đoạn viền cũ dạng nét đứt */
 .rsvp-card-box::before {
-  content: '';
-  position: absolute;
-  inset: 10px;
-  border: 1px dashed rgba(212, 175, 55, 0.35);
-  border-radius: 14px;
-  pointer-events: none;
+  display: none !important;
+}
+
+.rsvp-card-inner-content {
+  position: relative;
+  z-index: 3;
 }
 
 /* Card Header */
@@ -3197,6 +3250,7 @@ body {
   gap: 26px;
   align-items: stretch;
   position: relative;
+  z-index: 3;
 }
 
 /* Left Form Box */
@@ -4090,14 +4144,27 @@ body {
 
   /* RSVP */
   .rsvp-card-box {
-    padding: 28px 18px;
+    padding: 44px 22px 38px !important;
     border-radius: 14px;
     margin-top: 20px;
+    background: transparent !important;
+    border: none !important;
   }
 
   .rsvp-card-box::before {
-    inset: 6px;
-    border-radius: 10px;
+    display: none !important;
+  }
+
+  .card-lace-frame {
+    inset: -12px -10px;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.16));
+  }
+  .card-lace-paper-bg {
+    inset: 3.8% 3.2%;
+  }
+
+  .wishes-glass-box {
+    padding: 24px 16px;
   }
 
   .rsvp-card-title {
