@@ -865,10 +865,10 @@ body {
 /* 1. Hiệu ứng đung đưa uyển chuyển của 2 linh vật (Sway) */
 @keyframes spdc-sway-l {
   0%, 100% {
-    transform: rotate(8deg) translateY(0) scale(1);
+    transform: rotate(2deg) translateY(0) scale(1);
   }
   50% {
-    transform: rotate(3deg) translateY(-14px) scale(1.02);
+    transform: rotate(-1deg) translateY(-8px) scale(1.02);
   }
 }
 
@@ -877,7 +877,7 @@ body {
     transform: scaleX(-1) rotate(-2deg) translateY(0) scale(1);
   }
   50% {
-    transform: scaleX(-1) rotate(-7deg) translateY(-14px) scale(1.02);
+    transform: scaleX(-1) rotate(1deg) translateY(-8px) scale(1.02);
   }
 }
 
@@ -888,19 +888,20 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-width: 1160px;
+  max-width: 960px;
   height: 100%;
   pointer-events: none;
   z-index: 1; /* Nằm ở lớp sau của thiệp cưới */
   opacity: 0;
   will-change: opacity, transform;
   transition: opacity 0.3s ease-out;
+  overflow: visible;
 }
 
 .card-creature-item {
   position: absolute;
-  top: 14%;
-  width: clamp(230px, 25vw, 360px);
+  top: 8%;
+  width: clamp(160px, 18vw, 240px);
   height: auto;
   pointer-events: none;
   user-select: none;
@@ -909,31 +910,38 @@ body {
 }
 
 .card-creature-item.creature-left {
-  left: -70px;
+  left: 10px;
   animation: spdc-sway-l 6.8s ease-in-out infinite;
 }
 
 .card-creature-item.creature-right {
-  right: -70px;
+  right: 10px;
   transform: scaleX(-1);
   animation: spdc-sway-r 7.4s ease-in-out 0.8s infinite;
 }
 
 @media (max-width: 768px) {
   .card-flanking-creatures {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     max-width: 100%;
+    height: 100%;
     overflow: visible;
   }
   .card-creature-item {
-    top: 6%;
-    width: 135px;
-    opacity: 0.95;
+    top: 3%;
+    width: clamp(86px, 23vw, 108px);
+    opacity: 0.98;
   }
   .card-creature-item.creature-left {
-    left: -24px;
+    left: 6px;
   }
   .card-creature-item.creature-right {
-    right: -24px;
+    right: 6px;
+    transform: scaleX(-1);
   }
 }
 
@@ -1207,11 +1215,13 @@ body {
   height: 44px;
   border-radius: 9999px;
   background: linear-gradient(135deg, #a61c1c 0%, #750000 100%);
-  color: #fff6e5;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   border: 1.2px solid rgba(245, 215, 120, 0.85);
-  font-family: var(--font-moihong, "UVNMoiHong", serif);
-  font-size: 20px;
-  font-weight: normal;
+  font-family: var(--font-body, 'Quicksand', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1222,8 +1232,15 @@ body {
   transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   animation: luxury-btn-pulse 2.8s infinite ease-in-out;
+}
+
+.btn-card-action span,
+.btn-card-action svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .btn-card-action::before {
@@ -2189,25 +2206,37 @@ body {
 .tl-action-buttons .btn-card-action {
   width: 220px;
   height: 44px;
-  border-radius: 6px;
-  background-color: #ebdccc;
-  color: #7b4020;
-  font-size: 15px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #a61c1c 0%, #750000 100%);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: var(--font-body, 'Quicksand', sans-serif);
+  font-size: 14.5px;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   text-decoration: none;
-  border: 1px solid #dfcfbe;
+  border: 1.2px solid rgba(245, 215, 120, 0.85);
   cursor: pointer;
+  box-shadow: 0 4px 14px rgba(117, 0, 0, 0.35), 0 0 8px rgba(212, 175, 55, 0.25);
   transition: all 0.25s ease;
 }
 
+.tl-action-buttons .btn-card-action span,
+.tl-action-buttons .btn-card-action svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
 .tl-action-buttons .btn-card-action:hover {
-  background-color: #dfcdba;
-  color: #612f13;
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #b82222 0%, #8a0000 100%);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(117, 0, 0, 0.45), 0 0 12px rgba(212, 175, 55, 0.35);
 }
 
 /* Countdown Box */
@@ -3783,8 +3812,11 @@ body {
   .btn-card-action {
     width: 152px;
     height: 40px;
-    font-size: 14px;
+    font-size: 13.5px;
+    font-weight: 600;
     border-radius: 9999px;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 
   /* RSVP */
