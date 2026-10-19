@@ -253,13 +253,17 @@ function openNovaInvitation() {
 }
 
 function triggerHeroCoupleAnimation() {
+  const heroBanner = document.getElementById('hero-hy-banner');
   const heroLeft = document.querySelector('.hero-name-left');
   const heroSep = document.querySelector('.hero-name-sep');
   const heroRight = document.querySelector('.hero-name-right');
-  const heroDates = document.getElementById('hero-dates-text');
   const heroScrollBtn = document.getElementById('hero-scroll-btn');
 
   // Reset các trạng thái để hiệu ứng chạy từ đầu
+  if (heroBanner) {
+    heroBanner.classList.remove('animate', 'qv-visible');
+    void heroBanner.offsetWidth;
+  }
   if (heroLeft) {
     heroLeft.classList.remove('animate', 'qv-visible');
     void heroLeft.offsetWidth; // Force reflow
@@ -272,21 +276,20 @@ function triggerHeroCoupleAnimation() {
     heroRight.classList.remove('animate', 'qv-visible');
     void heroRight.offsetWidth;
   }
-  if (heroDates) heroDates.classList.remove('qv-visible');
   if (heroScrollBtn) heroScrollBtn.classList.remove('qv-visible');
 
-  // Bắt đầu cho chữ "Phú Cường" và "Thuỳ Linh" chạy vào
+  // Kích hoạt thẻ chữ Hỷ và hiệu ứng viết chữ handwriting (Long Phụng V2 Đỏ)
   setTimeout(() => {
+    if (heroBanner) heroBanner.classList.add('animate');
     if (heroLeft) heroLeft.classList.add('animate');
     if (heroSep) heroSep.classList.add('animate');
     if (heroRight) heroRight.classList.add('animate');
   }, 80);
 
-  // Hiển thị ngày cưới và nút cuộn sau khi tên đã xuất hiện hoàn tất
+  // Hiển thị nút cuộn sau khi tên đã xuất hiện
   setTimeout(() => {
-    if (heroDates) heroDates.classList.add('qv-visible');
     if (heroScrollBtn) heroScrollBtn.classList.add('qv-visible');
-  }, 1100);
+  }, 2200);
 }
 
 function initHeroCoverAnimation() {
