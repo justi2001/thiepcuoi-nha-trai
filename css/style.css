@@ -3742,12 +3742,12 @@ body {
   }
 
   .hero-bg-img {
-    object-position: 57.5% center !important;
+    object-position: center center !important;
     transform: none !important;
   }
 
   .nova-cover-photo {
-    object-position: 57.5% center !important;
+    object-position: center center !important;
     transform: none !important;
   }
 
