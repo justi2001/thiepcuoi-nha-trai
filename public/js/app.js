@@ -52,12 +52,102 @@ const GUEST_NOTIFICATIONS = [
 ];
 
 // ==========================================
-// 2. BACKGROUND AUDIO & CONTROLS
+// 2. BACKGROUND AUDIO & CONTROLS (RANDOM PLAYLIST - 3 BÀI HÁT)
 // ==========================================
+const WEDDING_PLAYLIST = [
+  {
+    title: 'Lễ Đường - Kai Đinh',
+    src: './audio/le_duong.mp4',
+    startTime: 20
+  },
+  {
+    title: 'Một Đời - 14 Casper & Bon Nghiêm',
+    src: './audio/mot_doi.mp4',
+    startTime: 20
+  },
+  {
+    title: 'I Do - 911 (Nhạc Đám Cưới Hay Nhất)',
+    src: './audio/i_do_911.mp3',
+    fallbackSrc: 'https://s3-hcm-r2.s3cloud.vn/thiepcuoi-mehappy/audio-templates/980b5e37-0d23-473b-a559-f030fd7b5541.mp3',
+    startTime: 20
+  }
+];
+
+let currentTrackIndex = Math.floor(Math.random() * WEDDING_PLAYLIST.length);
 const bgAudio = document.getElementById('bg-audio');
 const audioToggleBtn = document.getElementById('audio-toggle-btn');
 let isAudioPlaying = false;
 var isAutoScrolling = false;
+let isAudioSeekInitialized = false;
+
+function initRandomAudioTrack() {
+  if (!bgAudio) return;
+  const track = WEDDING_PLAYLIST[currentTrackIndex];
+  bgAudio.src = track.src;
+
+  const seekToStartTime = () => {
+    const targetTime = track.startTime || 20;
+    if (bgAudio.currentTime < 1) {
+      try {
+        bgAudio.currentTime = targetTime;
+      } catch (e) {}
+    }
+  };
+
+  bgAudio.addEventListener('loadedmetadata', seekToStartTime);
+  bgAudio.addEventListener('canplay', seekToStartTime);
+
+  bgAudio.addEventListener('ended', () => {
+    let nextIndex;
+    do {
+      nextIndex = Math.floor(Math.random() * WEDDING_PLAYLIST.length);
+    } while (nextIndex === currentTrackIndex && WEDDING_PLAYLIST.length > 1);
+
+    currentTrackIndex = nextIndex;
+    isAudioSeekInitialized = false;
+    playCurrentTrack();
+  });
+
+  bgAudio.addEventListener('error', () => {
+    const curr = WEDDING_PLAYLIST[currentTrackIndex];
+    if (curr && curr.fallbackSrc && bgAudio.src !== curr.fallbackSrc) {
+      bgAudio.src = curr.fallbackSrc;
+      playCurrentTrack();
+    }
+  });
+}
+
+function playCurrentTrack() {
+  if (!bgAudio) return Promise.reject();
+  const track = WEDDING_PLAYLIST[currentTrackIndex];
+
+  if (!bgAudio.src || !bgAudio.src.includes(track.src.replace('./', ''))) {
+    bgAudio.src = track.src;
+    isAudioSeekInitialized = false;
+  }
+
+  const targetTime = track.startTime || 20;
+  if (!isAudioSeekInitialized || bgAudio.currentTime < 1) {
+    try {
+      bgAudio.currentTime = targetTime;
+      isAudioSeekInitialized = true;
+    } catch (e) {}
+  }
+
+  const p = bgAudio.play();
+  if (p && typeof p.then === 'function') {
+    return p.then(() => {
+      if (bgAudio.currentTime < 1) {
+        try {
+          bgAudio.currentTime = targetTime;
+          isAudioSeekInitialized = true;
+        } catch (e) {}
+      }
+      updateAudioUI(true);
+    }).catch(() => {});
+  }
+  return Promise.resolve();
+}
 
 function updateAudioUI(playing) {
   isAudioPlaying = playing;
@@ -81,7 +171,7 @@ function updateAudioUI(playing) {
 function toggleAudio() {
   if (!bgAudio) return;
   if (bgAudio.paused) {
-    bgAudio.play().then(() => updateAudioUI(true)).catch(() => {});
+    playCurrentTrack();
   } else {
     bgAudio.pause();
     updateAudioUI(false);
@@ -115,9 +205,9 @@ function openNovaInvitation() {
 
   cover.classList.add('nova-opening');
 
-  // 1. Phát nhạc nền du dương
+  // 1. Phát nhạc nền du dương (tự động chọn ngẫu nhiên bài hát và bắt đầu từ giây 20)
   if (bgAudio && bgAudio.paused) {
-    bgAudio.play().then(() => updateAudioUI(true)).catch(() => {});
+    playCurrentTrack();
   }
 
   // 2. Kích hoạt hiệu ứng sáng trắng mềm mại toàn màn hình để chuyển cảnh
@@ -264,7 +354,7 @@ function initCardCreaturesScrollEffect() {
 function enableAudioOnFirstGesture() {
   const onFirstInteraction = () => {
     if (bgAudio && bgAudio.paused) {
-      bgAudio.play().then(() => updateAudioUI(true)).catch(() => {});
+      playCurrentTrack();
     }
     ['click', 'touchstart', 'pointerdown', 'wheel', 'scroll', 'keydown'].forEach(evt => {
       window.removeEventListener(evt, onFirstInteraction, { capture: true });
@@ -1348,7 +1438,7 @@ function stopAutoScroll() {
 
 function toggleAutoScroll() {
   if (bgAudio && bgAudio.paused) {
-    bgAudio.play().then(() => updateAudioUI(true)).catch(() => {});
+    playCurrentTrack();
   }
   if (isAutoScrolling) {
     stopAutoScroll();
@@ -1388,6 +1478,7 @@ function setupAutoScrollPauseOnUserGesture() {
 // 15. INITIALIZATION ON DOM READY
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+  initRandomAudioTrack();
   enableAudioOnFirstGesture();
   initHeroCoverAnimation();
   initCardCreaturesScrollEffect();

@@ -14,6 +14,8 @@ const MIME_TYPES = {
   '.jpeg': 'image/jpeg',
   '.svg': 'image/svg+xml',
   '.mp3': 'audio/mpeg',
+  '.mp4': 'audio/mp4',
+  '.m4a': 'audio/mp4',
   '.otf': 'font/otf',
   '.ttf': 'font/ttf',
   '.woff': 'font/woff',
@@ -219,14 +221,33 @@ const server = http.createServer(async (req, res) => {
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-    const isStaticAsset = ['.jpg', '.jpeg', '.webp', '.png', '.svg', '.mp3', '.woff', '.woff2', '.ttf', '.otf'].includes(ext);
+    const isStaticAsset = ['.jpg', '.jpeg', '.webp', '.png', '.svg', '.mp3', '.mp4', '.m4a', '.woff', '.woff2', '.ttf', '.otf'].includes(ext);
     const cacheControl = isStaticAsset 
       ? 'public, max-age=604800, immutable' 
       : 'no-cache, no-store, must-revalidate';
 
+    // Support HTTP Range requests for instant seeking in audio files
+    const range = req.headers.range;
+    if (range && (ext === '.mp4' || ext === '.mp3' || ext === '.m4a')) {
+      const parts = range.replace(/bytes=/, "").split("-");
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : stats.size - 1;
+      const chunksize = (end - start) + 1;
+      res.writeHead(206, {
+        'Content-Range': `bytes ${start}-${end}/${stats.size}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': chunksize,
+        'Content-Type': contentType,
+        'Access-Control-Allow-Origin': '*'
+      });
+      fs.createReadStream(filePath, { start, end }).pipe(res);
+      return;
+    }
+
     res.writeHead(200, {
       'Content-Type': contentType,
       'Content-Length': stats.size,
+      'Accept-Ranges': 'bytes',
       'Cache-Control': cacheControl,
       'Access-Control-Allow-Origin': '*'
     });
