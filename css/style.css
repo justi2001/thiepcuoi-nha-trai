@@ -1124,23 +1124,25 @@ body {
 }
 
 .c-save-the-date {
-  font-family: 'Cinzel', 'Yeseva One', serif;
-  font-size: 14px;
-  letter-spacing: 4px;
-  color: #9e7328;
-  font-weight: 600;
-  margin-bottom: 16px;
+  font-family: 'Cinzel', 'Prata', serif;
+  font-size: 13.5px;
+  letter-spacing: 5px;
+  color: #c29d5b;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 18px;
   z-index: 2;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .card-photo-wrapper {
   position: static;
-  width: 180px;
-  height: 180px;
-  border-radius: 10px;
+  width: 270px;
+  height: 270px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16), 0 0 0 4px #ffffff, 0 0 0 5.5px rgba(212, 175, 55, 0.55);
-  margin-bottom: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 4px #ffffff, 0 0 0 5.5px rgba(212, 175, 55, 0.55);
+  margin-bottom: 20px;
   cursor: pointer;
   z-index: 2;
 }
@@ -1150,6 +1152,8 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
   transition: transform 0.4s ease;
 }
 
@@ -3833,17 +3837,29 @@ body {
   }
 
   .c-save-the-date {
-    font-size: 12px !important;
-    letter-spacing: 3.5px !important;
-    margin-bottom: 14px !important;
+    font-family: 'Cinzel', 'Prata', serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    letter-spacing: 5px !important;
+    color: #c29d5b !important;
+    margin-bottom: 16px !important;
   }
 
   .card-photo-wrapper {
-    width: 148px !important;
-    height: 148px !important;
-    border-radius: 8px !important;
-    margin-bottom: 16px !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16), 0 0 0 3px #ffffff, 0 0 0 4.5px rgba(212, 175, 55, 0.55) !important;
+    width: 235px !important;
+    height: 235px !important;
+    border-radius: 12px !important;
+    margin-bottom: 18px !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15), 0 0 0 3px #ffffff, 0 0 0 4.5px rgba(212, 175, 55, 0.55) !important;
+  }
+
+  .card-photo-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: high-quality !important;
   }
 
   .card-couple-calligraphy {
