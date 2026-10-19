@@ -5621,13 +5621,27 @@ body.nova-cover-active {
 .baroque-wedding-footer {
   position: relative;
   width: 100%;
-  background: radial-gradient(circle at 50% 15%, #143219 0%, #0b1f10 40%, #061308 80%, #020803 100%);
-  padding: 85px 20px 45px;
+  background-color: #061308;
+  background-image: url('../images/wedding/PQD06793.jpg?v=studio_4k');
+  background-position: center 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 95px 20px 55px;
   overflow: hidden;
   text-align: center;
   box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.5);
   border-top: 1px solid rgba(255, 223, 175, 0.22);
   z-index: 10;
+}
+
+.baroque-wedding-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(10, 32, 16, 0.76) 0%, rgba(5, 18, 9, 0.88) 55%, rgba(2, 8, 3, 0.96) 100%);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .baroque-footer-inner {
@@ -5647,36 +5661,22 @@ body.nova-cover-active {
   transform: translateX(-50%);
   width: min(90vw, 520px);
   height: 260px;
-  background: radial-gradient(ellipse at center, rgba(255, 223, 175, 0.16) 0%, rgba(255, 223, 175, 0.05) 50%, transparent 75%);
+  background: radial-gradient(ellipse at center, rgba(255, 223, 175, 0.18) 0%, rgba(255, 223, 175, 0.05) 50%, transparent 75%);
   pointer-events: none;
   filter: blur(25px);
   z-index: 0;
 }
 
-.baroque-footer-subtext {
-  font-family: 'Lora', 'Times New Roman', serif;
-  font-size: clamp(14px, 1.8vw, 17px);
-  color: #FFEFD6;
-  line-height: 1.8;
-  max-width: 480px;
-  margin: 0 auto 16px;
-  font-style: normal;
-  letter-spacing: 0.02em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
-  position: relative;
-  z-index: 1;
-}
-
 .baroque-footer-thankyou {
   font-family: 'Great Vibes', 'The Nautigal', cursive;
-  font-size: clamp(54px, 7.5vw, 84px);
+  font-size: clamp(56px, 8vw, 92px);
   color: #ffffff;
   font-weight: 400;
   line-height: 1.15;
-  margin: 0 auto 14px;
+  margin: 0 auto 16px;
   text-shadow:
-    0 0 12px rgba(255, 255, 255, 0.8),
-    0 0 30px rgba(255, 223, 175, 0.7),
+    0 0 12px rgba(255, 255, 255, 0.85),
+    0 0 32px rgba(255, 223, 175, 0.75),
     0 4px 18px rgba(0, 0, 0, 0.95);
   position: relative;
   z-index: 1;
@@ -5685,16 +5685,16 @@ body.nova-cover-active {
 .baroque-footer-names {
   font-family: 'The Nautigal', 'Great Vibes', cursive;
   font-weight: 700;
-  font-size: clamp(48px, 7vw, 76px);
+  font-size: clamp(52px, 7.5vw, 82px);
   color: #FFDFAF;
   line-height: 1.25;
-  margin: 0 auto 16px;
+  margin: 0 auto 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
   text-shadow:
-    0 0 18px rgba(255, 223, 175, 0.55),
+    0 0 18px rgba(255, 223, 175, 0.6),
     0 3px 12px rgba(0, 0, 0, 0.9);
   position: relative;
   z-index: 1;
@@ -5705,18 +5705,6 @@ body.nova-cover-active {
   color: #E2BC84;
   display: inline-block;
   animation: baroqueHeartBeat 2.2s ease-in-out infinite;
-}
-
-.baroque-footer-tagline {
-  font-family: 'Lora', 'Times New Roman', serif;
-  font-size: clamp(12px, 1.4vw, 14px);
-  color: rgba(255, 223, 175, 0.82);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin: 0 auto 34px;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .baroque-flower-decor-wrap {
