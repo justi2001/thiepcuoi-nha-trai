@@ -549,14 +549,26 @@ async function handleRsvpSubmit(e) {
   const fullName = nameInput ? nameInput.value.trim() : '';
   const willComeRadio = document.querySelector('input[name="willComeRadio"]:checked');
   const willCome = willComeRadio ? willComeRadio.value : 'Có, tôi sẽ tham dự';
-  const guestsEl = document.getElementById('rsvp-guests');
-  const guests = guestsEl ? guestsEl.value : '1';
-  const eventEl = document.getElementById('rsvp-event');
-  const eventSide = eventEl ? eventEl.value : '';
+
+  const guestOfEl = document.getElementById('rsvp-guest-of');
+  const guestType = guestOfEl ? (guestOfEl.options[guestOfEl.selectedIndex]?.text || guestOfEl.value) : 'Khách mời của cả hai';
+
+  const countEl = document.getElementById('rsvp-count') || document.getElementById('rsvp-guests');
+  const quantity = countEl ? (countEl.options[countEl.selectedIndex]?.text || countEl.value) : '1';
+
+  const eventTargetEl = document.getElementById('rsvp-event-target') || document.getElementById('rsvp-event');
+  const partyTime = eventTargetEl ? (eventTargetEl.options[eventTargetEl.selectedIndex]?.text || eventTargetEl.value) : 'Tiệc Cưới Nhà Trai';
+
   const noteEl = document.getElementById('rsvp-note');
   const note = noteEl ? noteEl.value.trim() : '';
   const btn = document.getElementById('rsvp-submit-btn');
   const feedback = document.getElementById('rsvp-feedback');
+
+  if (!fullName) {
+    alert('Vui lòng nhập họ và tên của bạn!');
+    if (nameInput) nameInput.focus();
+    return;
+  }
 
   if (btn) {
     btn.disabled = true;
@@ -564,15 +576,21 @@ async function handleRsvpSubmit(e) {
   }
 
   const payload = {
+    sheetName: 'RSVP',
     action: 'rsvp',
     name: fullName,
     fullName: fullName,
+    status: willCome,
     willCome: willCome,
     attending: willCome,
-    guests: guests,
-    count: guests,
-    event: eventSide,
-    eventSide: eventSide,
+    guestType: guestType,
+    guestOf: guestType,
+    quantity: quantity,
+    guests: quantity,
+    count: quantity,
+    partyTime: partyTime,
+    event: partyTime,
+    eventSide: partyTime,
     note: note,
     message: note,
     time: new Date().toLocaleString('vi-VN')
@@ -666,6 +684,7 @@ async function handleWishSubmit(e) {
   feedback.className = 'form-feedback-msg';
 
   const payload = {
+    sheetName: 'Wishes',
     action: 'wish',
     name: author,
     fullName: author,
@@ -1185,20 +1204,14 @@ function initScrollReveal() {
 
       if (entry.isIntersecting) {
         el.classList.add('qv-visible');
-      } else {
-        const rect = el.getBoundingClientRect();
-        if (rect.top > window.innerHeight) {
-          el.classList.remove('qv-visible');
-        }
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.02,
+    rootMargin: '50px 0px 50px 0px'
   });
 
-  // 2. Observer riêng cho các phần có ảnh:
-  // Người dùng phải CUỘN XUỐNG MỘT CHÚT (tiến sâu ít nhất 170px vào màn hình) thì ảnh mới bắt đầu hiện ra!
+  // 2. Observer cho các phần có ảnh: Hiển thị ngay lập tức, không làm trễ hay mờ ảnh!
   photoScrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const el = entry.target;
@@ -1206,22 +1219,17 @@ function initScrollReveal() {
 
       if (entry.isIntersecting) {
         el.classList.add('qv-visible');
-      } else {
-        const rect = el.getBoundingClientRect();
-        if (rect.top > window.innerHeight) {
-          el.classList.remove('qv-visible');
-        }
+        photoScrollObserver.unobserve(el);
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -170px 0px' // Phải cuộn xuống sâu hơn 170px thì ảnh mới hiện ra!
+    threshold: 0.02,
+    rootMargin: '100px 0px 100px 0px' // Kích hoạt sớm để ảnh luôn rõ nét ngay khi cuộn tới!
   });
 
   // Phân loại quan sát từng phần tử
   elements.forEach(el => {
     if (el.closest('#section-hero') || el.closest('.album-rows-wrap')) return;
-    el.classList.remove('qv-visible');
 
     if (isPhotoElement(el)) {
       photoScrollObserver.observe(el);
