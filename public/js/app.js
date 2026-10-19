@@ -8,7 +8,7 @@
 // ==========================================
 // 1. DATASET & CONFIGURATION
 // ==========================================
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVDiRcTBWRAM9k6VNq1Q_eBA-jjpworYfGkE9ytwdV42N-PdyeHqRewcbngO2VS95E/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9DSHqd9H3Ozx5kliWqyj-xvPxe477ZU67Ssh62DcCXXl6yQQRpBrfhKOHQ1KsQ_A/exec';
 
 const ALBUM_IMAGES = [
   "images/wedding/PQD06286.jpg",
@@ -586,12 +586,14 @@ async function handleRsvpSubmit(e) {
     }).catch(() => {});
 
     if (GOOGLE_SCRIPT_URL) {
-      await fetch(GOOGLE_SCRIPT_URL, {
+      const qs = new URLSearchParams(payload).toString();
+      const scriptUrl = GOOGLE_SCRIPT_URL.includes('?') ? `${GOOGLE_SCRIPT_URL}&${qs}` : `${GOOGLE_SCRIPT_URL}?${qs}`;
+      await fetch(scriptUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
-      }).catch(() => {});
+      }).catch(err => console.warn('Google Script sync warning:', err));
     }
 
     if (feedback) {
@@ -656,12 +658,14 @@ async function handleWishSubmit(e) {
     }).catch(() => {});
 
     if (GOOGLE_SCRIPT_URL) {
-      await fetch(GOOGLE_SCRIPT_URL, {
+      const qs = new URLSearchParams(payload).toString();
+      const scriptUrl = GOOGLE_SCRIPT_URL.includes('?') ? `${GOOGLE_SCRIPT_URL}&${qs}` : `${GOOGLE_SCRIPT_URL}?${qs}`;
+      await fetch(scriptUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
-      }).catch(() => {});
+      }).catch(err => console.warn('Google Script sync warning:', err));
     }
 
     if (list) {
