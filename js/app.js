@@ -52,17 +52,17 @@ const GUEST_NOTIFICATIONS = [
 ];
 
 // ==========================================
-// 2. BACKGROUND AUDIO & CONTROLS (RANDOM PLAYLIST - 3 BÀI HÁT)
+// 2. BACKGROUND AUDIO & CONTROLS (RANDOM PLAYLIST - NHẠC CHẤT LƯỢNG CAO)
 // ==========================================
 const WEDDING_PLAYLIST = [
   {
     title: 'Lễ Đường - Kai Đinh',
-    src: './audio/le_duong.mp4',
+    src: './audio/le_duong.mp3',
     startTime: 20
   },
   {
     title: 'Một Đời - 14 Casper & Bon Nghiêm',
-    src: './audio/mot_doi.mp4',
+    src: './audio/mot_doi.mp3',
     startTime: 20
   },
   {
@@ -87,15 +87,28 @@ function initRandomAudioTrack() {
 
   const seekToStartTime = () => {
     const targetTime = track.startTime || 20;
-    if (bgAudio.currentTime < 1) {
+    if (bgAudio.currentTime < targetTime) {
       try {
         bgAudio.currentTime = targetTime;
+        isAudioSeekInitialized = true;
       } catch (e) {}
     }
   };
 
   bgAudio.addEventListener('loadedmetadata', seekToStartTime);
   bgAudio.addEventListener('canplay', seekToStartTime);
+
+  // Đảm bảo tuyệt đối bỏ đoạn dạo đầu khi nhạc bắt đầu phát
+  bgAudio.addEventListener('timeupdate', () => {
+    const curr = WEDDING_PLAYLIST[currentTrackIndex];
+    const target = (curr && curr.startTime) ? curr.startTime : 20;
+    if (!isAudioSeekInitialized && bgAudio.currentTime < target) {
+      isAudioSeekInitialized = true;
+      try {
+        bgAudio.currentTime = target;
+      } catch (e) {}
+    }
+  });
 
   bgAudio.addEventListener('ended', () => {
     let nextIndex;
@@ -127,7 +140,7 @@ function playCurrentTrack() {
   }
 
   const targetTime = track.startTime || 20;
-  if (!isAudioSeekInitialized || bgAudio.currentTime < 1) {
+  if (!isAudioSeekInitialized || bgAudio.currentTime < targetTime) {
     try {
       bgAudio.currentTime = targetTime;
       isAudioSeekInitialized = true;
@@ -137,7 +150,7 @@ function playCurrentTrack() {
   const p = bgAudio.play();
   if (p && typeof p.then === 'function') {
     return p.then(() => {
-      if (bgAudio.currentTime < 1) {
+      if (bgAudio.currentTime < targetTime) {
         try {
           bgAudio.currentTime = targetTime;
           isAudioSeekInitialized = true;
