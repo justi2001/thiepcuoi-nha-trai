@@ -1303,6 +1303,7 @@ function openLightboxByIndex(index) {
   updateLightboxImage();
   const modal = document.getElementById('qv-lightbox');
   if (modal) modal.classList.add('open');
+  document.body.classList.add('lightbox-open');
 }
 
 function openLightboxBySrc(src) {
@@ -1318,6 +1319,7 @@ function openLightboxBySrc(src) {
     if (img) img.src = src;
     if (counter) counter.textContent = '';
     if (modal) modal.classList.add('open');
+    document.body.classList.add('lightbox-open');
   }
 }
 
@@ -1340,6 +1342,7 @@ function closeLightbox() {
   resetLightboxZoom();
   const modal = document.getElementById('qv-lightbox');
   if (modal) modal.classList.remove('open');
+  document.body.classList.remove('lightbox-open');
 }
 
 function closeLightboxOnBackdrop(e) {
