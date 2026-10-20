@@ -1558,7 +1558,7 @@ window.refreshScrollReveal = function() {
 let autoScrollAnimId = null;
 let lastScrollTime = null;
 let exactScrollY = 0;
-const AUTO_SCROLL_SPEED_PX = 48; // Tốc độ trôi êm dịu (~48px/giây, đọc thiệp cưới nhẹ nhàng thư thái)
+const AUTO_SCROLL_SPEED_PX = 95; // Tốc độ trôi trang mượt mà, trực quan và vừa vặn (~95px/giây)
 
 function updateAutoScrollUI(active) {
   isAutoScrolling = active;
