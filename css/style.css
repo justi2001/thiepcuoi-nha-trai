@@ -1233,6 +1233,62 @@ body {
   margin: 0 10px;
 }
 
+/* Card Parents Info Block */
+.card-parents-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 380px;
+  margin: 10px auto 12px;
+  position: static;
+  z-index: 2;
+}
+
+.c-parent-col {
+  flex: 1;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.c-parent-divider {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(184, 134, 45, 0.75) 15%, rgba(184, 134, 45, 0.75) 85%, transparent);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+.c-parent-heading {
+  font-family: 'Cinzel', 'Montserrat', serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #8b5b13;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.c-parent-item {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #333333;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.c-parent-role {
+  color: #777777;
+  font-size: 11.5px;
+  margin-right: 3px;
+  font-weight: 500;
+}
+
+.c-parent-name {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
 .c-divider-mark {
   font-size: 10px;
   color: #c69d48;
@@ -4501,6 +4557,29 @@ body {
 
   .c-old-addr {
     font-size: 11px !important;
+  }
+
+  .card-parents-block {
+    margin: 8px auto 10px !important;
+  }
+
+  .c-parent-heading {
+    font-size: 10.5px !important;
+    letter-spacing: 1.8px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .c-parent-item {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+  }
+
+  .c-parent-role {
+    font-size: 11px !important;
+  }
+
+  .c-parent-divider {
+    height: 44px !important;
   }
 
   .card-buttons-row {
