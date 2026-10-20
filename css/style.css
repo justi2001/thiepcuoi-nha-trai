@@ -663,8 +663,11 @@ body {
   height: 100vh;
   min-height: 720px;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-bg-cover {
@@ -691,31 +694,24 @@ body {
   pointer-events: none;
 }
 
-.hero-container {
-  z-index: 2;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: clamp(45px, 6.5vh, 65px) 20px 20px;
-}
-
 /* --- THẺ CHỮ HỶ (LONG PHỤNG V2 ĐỎ) --- */
 .hero-hy-banner {
+  position: relative;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 440px;
+  max-width: 100%;
   background-color: #FFE3B1;
-  padding: 10px 0;
-  margin: 0 auto 20px;
-  border-radius: 4px;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
+  padding: 14px 0;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
   transform-origin: center center;
   opacity: 0;
   transform: scaleX(0);
+  flex-shrink: 0;
 }
 
 .hero-hy-banner.animate,
@@ -737,10 +733,24 @@ body {
 }
 
 .hero-hy-img {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 2px 4px rgba(104, 14, 14, 0.35));
+}
+
+.hero-container {
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(30px, 4.5vh, 45px) 20px 20px;
+  width: 100%;
+  max-width: var(--desktop-max-width, 960px);
+  flex-grow: 1;
 }
 
 .hero-hy-banner.animate .hero-hy-img,
@@ -4279,8 +4289,9 @@ body {
     height: 100vh;
     min-height: 600px;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .hero-bg-img {
@@ -4293,21 +4304,24 @@ body {
     transform: none !important;
   }
 
-  .hero-container {
-    padding-top: clamp(190px, 24vh, 220px) !important;
-    padding-bottom: 20px;
-    width: 100%;
-  }
-
   .hero-hy-banner {
-    max-width: 90%;
-    padding: 8px 0;
-    margin-bottom: 12px;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 0;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   }
 
   .hero-hy-img {
-    width: 28px;
-    height: 28px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero-container {
+    padding-top: clamp(20px, 3vh, 32px) !important;
+    padding-bottom: 20px;
+    width: 100%;
   }
 
   .hero-couple-title {
