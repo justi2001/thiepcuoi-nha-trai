@@ -427,7 +427,14 @@
                 <input type="radio" name="willComeRadio" value="Có, tôi sẽ tham dự" checked style="display:none;">
                 <div class="att-card-indicator"></div>
                 <div class="att-card-content">
-                  <div class="att-card-title">✨ Có, tôi sẽ tham dự</div>
+                  <div class="att-card-title">
+                    <span class="att-badge-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z" />
+                      </svg>
+                    </span>
+                    <span>Có, tôi sẽ tham dự</span>
+                  </div>
                   <div class="att-card-desc">Chung vui cùng cô dâu &amp; chú rể</div>
                 </div>
               </label>
@@ -437,7 +444,15 @@
                 <input type="radio" name="willComeRadio" value="Xin lỗi, tôi bận mất rồi" style="display:none;">
                 <div class="att-card-indicator"></div>
                 <div class="att-card-content">
-                  <div class="att-card-title">💌 Rất tiếc, tôi bận mất rồi</div>
+                  <div class="att-card-title">
+                    <span class="att-badge-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path
+                          d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                      </svg>
+                    </span>
+                    <span>Rất tiếc, tôi bận mất rồi</span>
+                  </div>
                   <div class="att-card-desc">Gửi lời chúc phúc từ xa</div>
                 </div>
               </label>
@@ -481,14 +496,12 @@
             <div class="form-row-1 input-with-icon qv-anim-fade-up qv-delay-5">
               <span class="input-icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                  <!-- <path
-                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z" /> -->
+                  <path
+                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z" />
                 </svg>
               </span>
               <select id="rsvp-event-target" name="event" class="master-select icon-indent">
                 <option value="Tiệc Cưới nhà Trai" selected>Tham gia Tiệc Cưới Nhà Trai (13.11.2026)</option>
-                <!-- <option value="Tiệc Cưới nhà Gái">Tham gia Tiệc Cưới Nhà Gái (17.11.2026)</option>
-                <option value="Cả hai Sự kiện">Tham gia cả hai buổi tiệc</option> -->
               </select>
             </div>
 
@@ -497,8 +510,9 @@
               <button type="submit" id="rsvp-submit-btn" class="btn-rsvp-submit luxury-btn">
                 <span class="btn-shine"></span>
                 <span class="btn-label">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   <span>Xác Nhận Tham Dự</span>
                 </span>

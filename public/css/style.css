@@ -1491,14 +1491,14 @@ body {
 
 /* Luxury RSVP Card Container (Thay viền cũ bằng viền hoa ren thêu trắng) */
 .rsvp-card-box {
-  width: 720px;
+  width: 700px;
   max-width: 95%;
   margin: 32px auto 0;
   background: transparent !important;
   border: none !important;
   border-radius: 20px;
   box-shadow: none !important;
-  padding: 56px 44px 50px !important;
+  padding: 56px 64px 48px !important;
   position: relative;
   overflow: visible !important;
 }
@@ -1619,41 +1619,53 @@ body {
 .master-input,
 .master-select {
   width: 100%;
-  height: 52px;
-  border: 1.5px solid #e5dcce;
-  border-radius: 10px;
-  background: #fdfcf9;
+  height: 50px;
+  border: 1.5px solid #e7dfd3;
+  border-radius: 12px;
+  background: #ffffff;
   color: #2b2b2b;
   font-family: var(--font-body);
-  font-size: 15.5px;
+  font-size: 15px;
   padding: 0 16px;
   outline: none;
   transition: all 0.25s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
 .master-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238c734b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a37b38' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: calc(100% - 14px) center;
+  background-position: calc(100% - 16px) center;
   background-size: 16px 16px;
   cursor: pointer;
 }
 
 .master-input.icon-indent,
 .master-select.icon-indent {
-  padding-left: 54px !important;
+  padding-left: 50px !important;
   padding-right: 36px !important;
+}
+
+.input-with-icon .input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b88d3e;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .master-input:focus,
 .master-select:focus {
-  border-color: #d4a550;
+  border-color: #c49845;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(212, 165, 80, 0.2);
+  box-shadow: 0 0 0 3px rgba(196, 152, 69, 0.16);
 }
 
 /* Attendance Toggle Cards */
@@ -1665,92 +1677,110 @@ body {
 
 .attendance-toggle-card {
   flex: 1;
-  min-height: 60px;
-  background: #fdfcf9;
-  border: 1.5px solid #e5dcce;
+  min-height: 58px;
+  background: #ffffff;
+  border: 1.5px solid #e7ded2;
   border-radius: 12px;
-  padding: 10px 16px;
+  padding: 10px 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 12px;
   transition: all 0.25s ease;
   user-select: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
 }
 
 .attendance-toggle-card:hover {
-  border-color: #d4a550;
-  background: #ffffff;
+  border-color: #c49845;
+  background: #fffdf9;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196, 152, 69, 0.1);
 }
 
 .attendance-toggle-card.active {
-  background: linear-gradient(135deg, #FFFBF0 0%, #FFF3DB 100%);
-  border-color: #d4a550;
-  box-shadow: 0 4px 14px rgba(212, 165, 80, 0.22);
+  background: linear-gradient(135deg, #FCF8F0 0%, #FBF3E4 100%);
+  border-color: #c49845;
+  box-shadow: 0 4px 14px rgba(196, 152, 69, 0.18);
 }
 
 .att-card-indicator {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid #ccc;
+  border: 2px solid #d4c8b8;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: all 0.2s ease;
+  background: #ffffff;
 }
 
 .attendance-toggle-card.active .att-card-indicator {
-  border-color: #c48e2e;
-  background: #c48e2e;
+  border-color: #c49845;
+  background: #c49845;
   box-shadow: inset 0 0 0 3px #ffffff;
 }
 
 .att-card-content {
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .att-card-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #2b2b2b;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #2e2820;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.25;
+}
+
+.att-badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #c49845;
+  flex-shrink: 0;
 }
 
 .attendance-toggle-card.active .att-card-title {
-  color: #8c5b10;
+  color: #8c570b;
 }
 
 .att-card-desc {
   font-size: 12px;
-  color: #777777;
-  margin-top: 2px;
+  color: #7d756b;
+  line-height: 1.25;
 }
 
-/* Luxury Submit Button (Matching Image 1) */
+/* Luxury Submit Button */
 .luxury-btn {
   width: 100%;
-  height: 56px;
-  background: linear-gradient(135deg, #a61c1c 0%, #750000 100%);
-  color: #fff6e5;
-  font-family: var(--font-moihong, "UVNMoiHong", "Playfair Display", serif);
-  font-size: 24px;
-  font-weight: normal;
-  letter-spacing: 0.5px;
-  border: 1.5px solid rgba(245, 215, 120, 0.85);
+  height: 52px;
+  background: linear-gradient(135deg, #8f1c1c 0%, #6e0f14 100%);
+  color: #fff8ee;
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255, 223, 175, 0.65);
   border-radius: 9999px;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(117, 0, 0, 0.45), 0 0 12px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 16px rgba(110, 15, 20, 0.28), 0 2px 4px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 6px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  animation: luxury-btn-pulse 2.4s infinite ease-in-out;
+  margin-top: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .luxury-btn .btn-label {
@@ -1770,7 +1800,7 @@ body {
   left: -120%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), rgba(245, 215, 120, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), rgba(245, 215, 120, 0.4), transparent);
   transform: skewX(-25deg);
   animation: luxury-shine-sweep 4s ease-in-out infinite;
   pointer-events: none;
@@ -1778,15 +1808,15 @@ body {
 }
 
 .luxury-btn:hover {
-  background: linear-gradient(135deg, #c42424 0%, #900000 100%);
-  box-shadow: 0 6px 24px rgba(166, 28, 28, 0.65), 0 0 18px rgba(245, 215, 120, 0.65);
-  transform: translateY(-2px) scale(1.02);
+  background: linear-gradient(135deg, #a32222 0%, #7d1219 100%);
+  box-shadow: 0 6px 22px rgba(110, 15, 20, 0.38), 0 0 14px rgba(212, 165, 80, 0.3);
+  transform: translateY(-2px);
   color: #ffffff;
 }
 
 .luxury-btn:active {
-  transform: scale(0.97);
-  box-shadow: 0 2px 10px rgba(117, 0, 0, 0.4);
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(110, 15, 20, 0.25);
 }
 
 .form-feedback-msg {
@@ -4275,7 +4305,7 @@ body {
 
   /* RSVP */
   .rsvp-card-box {
-    padding: 44px 22px 38px !important;
+    padding: 44px 28px 38px !important;
     border-radius: 14px;
     margin-top: 20px;
     background: transparent !important;
