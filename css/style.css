@@ -1438,20 +1438,73 @@ body {
    SECTION 4: RSVP FORM (LUXURY WEDDING CARD)
    ========================================================================== */
 .sec-rsvp {
-  background-color: #f8f9fa;
+  background: linear-gradient(145deg, #F5EADB 0%, #FDFBF7 45%, #F4E8D5 100%);
+  position: relative;
+  overflow: hidden;
   padding: 80px 0 95px;
 }
 
 .rsvp-bg-watercolor {
   position: absolute;
   inset: 0;
-  background-image:
-    url('https://s3-hcm-r2.s3cloud.vn/thiepcuoi-mehappy/admin/assets/395221e2-cc67-4758-969b-88634a471910-full.webp'),
-    url('https://s3-hcm-r2.s3cloud.vn/thiepcuoi-mehappy/admin/assets/2e819a1e-25ae-4d18-96ce-fd2d368f63f7-full.webp');
-  background-repeat: repeat, no-repeat;
-  background-position: center center, center center;
-  background-size: auto, cover;
-  opacity: 0.85;
+  background-image: url('../images/decor/baroque-pattern-bg.webp');
+  background-repeat: repeat;
+  background-position: center center;
+  background-size: 300px 300px;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Baroque Gold Scroll Flanking Ornaments */
+.rsvp-baroque-flourish {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 8px 24px rgba(185, 125, 62, 0.28));
+  user-select: none;
+}
+
+.rsvp-baroque-flourish img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rsvp-baroque-flourish.flourish-left {
+  left: 4%;
+  top: 260px;
+  width: 180px;
+  max-width: 22vw;
+  animation: bvgFloatLeft 7s ease-in-out infinite;
+}
+
+.rsvp-baroque-flourish.flourish-right {
+  right: 4%;
+  top: 300px;
+  width: 180px;
+  max-width: 22vw;
+  transform: scaleX(-1);
+  animation: bvgFloatRight 7.5s ease-in-out -3s infinite;
+}
+
+@keyframes bvgFloatLeft {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes bvgFloatRight {
+  0%, 100% {
+    transform: scaleX(-1) translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-14px) rotate(-2deg);
+  }
 }
 
 .rsvp-container {
@@ -4600,6 +4653,20 @@ body {
   }
 
   /* RSVP */
+  .rsvp-baroque-flourish.flourish-left {
+    left: -18px !important;
+    top: 50px !important;
+    width: 85px !important;
+    max-width: 24vw !important;
+  }
+
+  .rsvp-baroque-flourish.flourish-right {
+    right: -18px !important;
+    top: 130px !important;
+    width: 85px !important;
+    max-width: 24vw !important;
+  }
+
   .rsvp-card-box {
     padding: 44px 28px 38px !important;
     border-radius: 14px;
