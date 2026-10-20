@@ -6362,88 +6362,11 @@ body.nova-cover-active {
   animation: baroqueHeartBeat 2.2s ease-in-out infinite;
 }
 
-.baroque-flower-decor-wrap {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  padding-top: 6px;
-  overflow: visible;
-  z-index: 1;
-}
-
-.baroque-flower-motion {
-  display: block;
-  width: 125%;
-  max-width: 680px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 15px rgba(255, 223, 175, 0.3));
-  animation: baroqueFlowerSway 6.5s ease-in-out infinite, baroqueFlowerGlint 4.5s ease-in-out infinite;
-  transform-origin: center bottom;
-  pointer-events: none;
-}
-
-@keyframes baroqueFlowerSway {
-
-  0%,
-  100% {
-    transform: translateY(0) scale(1) rotate(0deg);
-  }
-
-  35% {
-    transform: translateY(-7px) scale(1.02) rotate(0.8deg);
-  }
-
-  70% {
-    transform: translateY(-3px) scale(1.01) rotate(-0.8deg);
-  }
-}
-
-@keyframes baroqueFlowerGlint {
-
-  0%,
-  100% {
-    filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 12px rgba(255, 223, 175, 0.2)) brightness(1);
-  }
-
-  50% {
-    filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 26px rgba(255, 223, 175, 0.65)) brightness(1.18);
-  }
-}
-
-@keyframes baroqueHeartBeat {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  15% {
-    transform: scale(1.18);
-  }
-
-  30% {
-    transform: scale(1);
-  }
-
-  45% {
-    transform: scale(1.1);
-  }
-}
-
 @media (max-width: 768px) {
   .baroque-wedding-footer {
     background-image: url('../images/wedding/footer_couple_mobile.jpg?v=studio_4k');
     background-position: center 35%;
-    padding: 65px 16px 95px;
+    padding: 70px 16px 105px;
     /* Khoảng đệm an toàn cho thanh bottom toolbar */
-  }
-
-  .baroque-flower-motion {
-    width: 145%;
-    max-width: 520px;
   }
 }
