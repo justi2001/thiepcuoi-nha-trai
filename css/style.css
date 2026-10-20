@@ -703,28 +703,27 @@ body {
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  padding: 14px 0;
-  margin: 140px 0 0 0;
-  /* Đổi từ margin: 0 thành cách trên 10px */
+  background: transparent;
+  padding: 0;
+  margin: clamp(65px, 8.5vh, 100px) 0 0 0;
   border-radius: 0;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  box-shadow: none;
   transform-origin: center center;
-  opacity: 0;
-  transform: scaleX(0);
+  opacity: 1;
   flex-shrink: 0;
 }
 
 .hero-hy-banner.animate,
 .hero-hy-banner.qv-visible {
-  animation: lp2-band 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+  animation: none;
 }
 
 .hero-hy-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transform: scale(0.3) rotate(-90deg);
+  opacity: 1;
+  transform: none;
 }
 
 .hero-hy-banner.animate .hero-hy-badge,
@@ -733,11 +732,12 @@ body {
 }
 
 .hero-hy-img {
-  width: 48px;
-  height: 48px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 2px 4px rgba(104, 14, 14, 0.35));
+  opacity: 1;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
 }
 
 .hero-container {
@@ -747,10 +747,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(30px, 4.5vh, 45px) 20px 20px;
+  padding: 16px 20px 20px;
   width: 100%;
   max-width: var(--desktop-max-width, 960px);
-  flex-grow: 1;
+  flex-grow: 0;
 }
 
 .hero-hy-banner.animate .hero-hy-img,
@@ -4543,19 +4543,23 @@ body:has(#qv-lightbox.open) .audio-toggle-btn {
   .hero-hy-banner {
     width: 100%;
     max-width: 100%;
-    padding: 12px 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: clamp(85px, 13vh, 125px) 0 0 0 !important;
+    background: transparent !important;
     border-radius: 0;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .hero-hy-img {
-    width: 42px;
-    height: 42px;
+    width: clamp(75px, 20vw, 88px) !important;
+    height: clamp(75px, 20vw, 88px) !important;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.45)) !important;
   }
 
   .hero-container {
-    padding-top: clamp(20px, 3vh, 32px) !important;
+    padding-top: 10px !important;
     padding-bottom: 20px;
     width: 100%;
   }
@@ -4565,7 +4569,7 @@ body:has(#qv-lightbox.open) .audio-toggle-btn {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-size: clamp(34px, 8.5vw, 44px);
+    font-size: clamp(34px, 8.5vw, 44px) !important;
     gap: 8px;
     line-height: 1.15;
     margin-bottom: 8px;
