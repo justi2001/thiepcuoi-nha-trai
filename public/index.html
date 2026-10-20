@@ -1137,15 +1137,69 @@
     </div>
   </div>
 
-  <!-- ================= SECTION 14: FULL LIGHTBOX MODAL ================= -->
+  <!-- ================= SECTION 14: FULL LIGHTBOX MODAL WITH ZOOM CONTROLS ================= -->
   <div id="qv-lightbox" class="lightbox-overlay" onclick="closeLightboxOnBackdrop(event)">
-    <button type="button" class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <button type="button" class="lightbox-arrow prev" onclick="navigateLightbox(-1)">&lsaquo;</button>
-    <div class="lightbox-media-container">
-      <img id="lightbox-img" src="" alt="Ảnh cưới Phú Cường & Thuỳ Linh">
-      <div id="lightbox-counter" class="lightbox-counter">1 / 26</div>
+    <!-- Top Bar Controls -->
+    <div class="lightbox-top-toolbar" onclick="event.stopPropagation()">
+      <div class="lightbox-counter" id="lightbox-counter">1 / 26</div>
+
+      <div class="lightbox-zoom-controls">
+        <button type="button" class="lightbox-tool-btn" id="lb-zoom-out" onclick="zoomLightbox(-0.25)" title="Thu nhỏ (-)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </button>
+
+        <button type="button" class="lightbox-tool-btn lb-zoom-badge" id="lb-zoom-reset" onclick="resetLightboxZoom()" title="Đặt lại phóng to (100%)">
+          100%
+        </button>
+
+        <button type="button" class="lightbox-tool-btn" id="lb-zoom-in" onclick="zoomLightbox(0.25)" title="Phóng to (+)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </button>
+
+        <button type="button" class="lightbox-tool-btn" id="lb-zoom-fit" onclick="toggleLightboxFullZoom()" title="Phóng đại 2x / Vừa khung">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <button type="button" class="lightbox-close-btn" onclick="closeLightbox()" title="Đóng (Esc)">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
-    <button type="button" class="lightbox-arrow next" onclick="navigateLightbox(1)">&rsaquo;</button>
+
+    <!-- Navigation Arrows -->
+    <button type="button" class="lightbox-arrow prev" onclick="navigateLightbox(-1)" title="Ảnh trước">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <!-- Main Media Area with smooth Zooming & Panning -->
+    <div class="lightbox-media-container" onclick="event.stopPropagation()">
+      <div class="lightbox-img-wrap" id="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="Ảnh cưới Phú Cường & Thuỳ Linh" draggable="false">
+      </div>
+      <div id="lightbox-caption" class="lightbox-caption-box"></div>
+    </div>
+
+    <button type="button" class="lightbox-arrow next" onclick="navigateLightbox(1)" title="Ảnh tiếp theo">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
   </div>
 
   <!-- ================= MOBILE BOTTOM NAVIGATION TOOLBAR ================= -->
