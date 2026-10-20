@@ -703,9 +703,9 @@ body {
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  background-color: #FFE3B1;
   padding: 14px 0;
-  margin: 0;
+  margin: 140px 0 0 0;
+  /* Đổi từ margin: 0 thành cách trên 10px */
   border-radius: 0;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
   transform-origin: center center;
@@ -763,6 +763,7 @@ body {
     opacity: 0;
     transform: scaleX(0);
   }
+
   100% {
     opacity: 1;
     transform: scaleX(1);
@@ -774,9 +775,11 @@ body {
     opacity: 0;
     transform: scale(0.3) rotate(-90deg);
   }
+
   70% {
     transform: scale(1.15) rotate(8deg);
   }
+
   100% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
@@ -784,10 +787,13 @@ body {
 }
 
 @keyframes lp2-hy-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     filter: drop-shadow(0 0 0 rgba(104, 14, 14, 0));
     transform: scale(1);
   }
+
   50% {
     filter: drop-shadow(0 0 6px rgba(104, 14, 14, 0.65));
     transform: scale(1.08);
@@ -860,9 +866,11 @@ body {
     opacity: 0;
     clip-path: inset(0 100% 0 0);
   }
+
   20% {
     opacity: 1;
   }
+
   100% {
     opacity: 1;
     clip-path: inset(-20% -10% -20% 0);
@@ -875,6 +883,7 @@ body {
     transform: translateY(26px);
     filter: blur(4px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -1852,7 +1861,7 @@ body {
    SECTION 5: GIFT BANNER & WEDDING ENVELOPE GIFT BOX
    ========================================================================== */
 .sec-gift {
-  min-height: 680px;
+  min-height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1869,12 +1878,13 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 75%;
 }
 
 .gift-dark-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.52);
+  background: rgba(0, 0, 0, 0.42);
 }
 
 .gift-container {
@@ -1883,7 +1893,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
+  padding: 50px 20px 45px;
 }
 
 .gift-title {
@@ -1893,7 +1903,7 @@ body {
   font-weight: normal;
   line-height: 1.25;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .gift-box-btn-wrap {
@@ -1901,12 +1911,13 @@ body {
   position: relative;
   display: inline-block;
   user-select: none;
+  margin-top: 50px;
 }
 
 .spd-gift-envelopes-wrap {
   position: relative;
-  width: 250px;
-  height: 340px;
+  width: 230px;
+  height: 310px;
   margin: 0 auto;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -3804,18 +3815,21 @@ body {
 }
 
 @keyframes tyMorphFade1 {
+
   0%,
   42% {
     opacity: 1;
     transform: scale(1);
     filter: blur(0px);
   }
+
   48%,
   94% {
     opacity: 0;
     transform: scale(1.05);
     filter: blur(6px);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);
@@ -3824,18 +3838,21 @@ body {
 }
 
 @keyframes tyMorphFade2 {
+
   0%,
   46% {
     opacity: 0;
     transform: scale(0.95);
     filter: blur(6px);
   }
+
   52%,
   88% {
     opacity: 1;
     transform: scale(1);
     filter: blur(0px);
   }
+
   94%,
   100% {
     opacity: 0;
@@ -3845,16 +3862,20 @@ body {
 }
 
 @keyframes tyHeartBeat {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   15% {
     transform: scale(1.22);
   }
+
   30% {
     transform: scale(1);
   }
+
   45% {
     transform: scale(1.18);
   }
@@ -4206,39 +4227,48 @@ body {
     height: 58px;
     padding: 0 12px;
   }
+
   .lightbox-counter {
     font-size: 13px;
     padding: 4px 10px;
   }
+
   .lightbox-zoom-controls {
     gap: 4px;
     padding: 3px 6px;
   }
+
   .lightbox-tool-btn {
     width: 32px;
     height: 32px;
   }
+
   .lb-zoom-badge {
     min-width: 44px;
     height: 26px;
     font-size: 11.5px;
     padding: 0 6px;
   }
+
   .lightbox-close-btn {
     width: 36px;
     height: 36px;
   }
+
   .lightbox-arrow {
     width: 40px;
     height: 40px;
     background: rgba(0, 0, 0, 0.45);
   }
+
   .lightbox-arrow.prev {
     left: 10px;
   }
+
   .lightbox-arrow.next {
     right: 10px;
   }
+
   #lightbox-img {
     max-width: 96vw;
     max-height: 80vh;
@@ -4507,6 +4537,7 @@ body {
     inset: -12px -10px;
     filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.16));
   }
+
   .card-lace-paper-bg {
     inset: 3.8% 3.2%;
   }
@@ -4725,6 +4756,34 @@ body {
 
   .alb-item.wide {
     height: 140px;
+  }
+
+  /* Gift Section */
+  .sec-gift {
+    min-height: 700px !important;
+  }
+
+  .gift-bg-img {
+    object-position: center 65% !important;
+  }
+
+  .gift-title {
+    font-size: 46px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .gift-box-btn-wrap {
+    margin-top: 65px !important;
+  }
+
+  .spd-gift-envelopes-wrap {
+    width: 200px !important;
+    height: 270px !important;
+  }
+
+  .spd-env-hint-btn {
+    font-size: 18px !important;
+    padding: 6px 18px !important;
   }
 
   /* Wishes */
@@ -6085,39 +6144,61 @@ body.nova-cover-active {
 }
 
 @keyframes baroqueFlowerSway {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) scale(1) rotate(0deg);
   }
+
   35% {
     transform: translateY(-7px) scale(1.02) rotate(0.8deg);
   }
+
   70% {
     transform: translateY(-3px) scale(1.01) rotate(-0.8deg);
   }
 }
 
 @keyframes baroqueFlowerGlint {
-  0%, 100% {
+
+  0%,
+  100% {
     filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 12px rgba(255, 223, 175, 0.2)) brightness(1);
   }
+
   50% {
     filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 26px rgba(255, 223, 175, 0.65)) brightness(1.18);
   }
 }
 
 @keyframes baroqueHeartBeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.18); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.18);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.1);
+  }
 }
 
 @media (max-width: 768px) {
   .baroque-wedding-footer {
     background-image: url('../images/wedding/footer_couple_mobile.jpg?v=studio_4k');
     background-position: center 35%;
-    padding: 65px 16px 95px; /* Khoảng đệm an toàn cho thanh bottom toolbar */
+    padding: 65px 16px 95px;
+    /* Khoảng đệm an toàn cho thanh bottom toolbar */
   }
+
   .baroque-flower-motion {
     width: 145%;
     max-width: 520px;
