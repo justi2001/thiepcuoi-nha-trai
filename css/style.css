@@ -5759,8 +5759,8 @@ body.nova-cover-active {
   position: relative;
   width: 100%;
   background-color: #061308;
-  background-image: url('../images/wedding/PQD06793.jpg?v=studio_4k');
-  background-position: center 30%;
+  background-image: url('../images/wedding/footer_couple_desktop.jpg?v=studio_4k');
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 95px 20px 55px;
@@ -5775,8 +5775,7 @@ body.nova-cover-active {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(10, 32, 16, 0.76) 0%, rgba(5, 18, 9, 0.88) 55%, rgba(2, 8, 3, 0.96) 100%);
-  backdrop-filter: blur(2px);
+  background: radial-gradient(circle at 50% 50%, rgba(10, 32, 16, 0.5) 0%, rgba(5, 18, 9, 0.72) 55%, rgba(2, 8, 3, 0.88) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -5898,6 +5897,8 @@ body.nova-cover-active {
 
 @media (max-width: 768px) {
   .baroque-wedding-footer {
+    background-image: url('../images/wedding/footer_couple_mobile.jpg?v=studio_4k');
+    background-position: center 35%;
     padding: 65px 16px 95px; /* Khoảng đệm an toàn cho thanh bottom toolbar */
   }
   .baroque-flower-motion {
